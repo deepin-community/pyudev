@@ -1,0 +1,21 @@
+From: Skruppy <skruppy@onmars.eu>
+Date: Sun, 14 Jun 2020 23:59:58 +0200
+Subject: Ignore import error in tests
+
+---
+ src/pyudev/glib.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pyudev/glib.py b/src/pyudev/glib.py
+index 4865201..8d08d4e 100644
+--- a/src/pyudev/glib.py
++++ b/src/pyudev/glib.py
+@@ -35,7 +35,7 @@
+ from __future__ import (print_function, division, unicode_literals,
+                         absolute_import)
+ 
+-from gi.repository import GLib, GObject
++from gi.repository import GLib, GObject  # pylint: disable=import-error
+ 
+ 
+ class _ObserverMixin(object):

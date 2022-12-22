@@ -1,0 +1,43 @@
+From 407949994bcd8f827a0963592018a65c9cc8a9e4 Mon Sep 17 00:00:00 2001
+From: SVN-Git Migration <python-modules-team@lists.alioth.debian.org>
+Date: Thu, 8 Oct 2015 13:29:41 -0700
+Subject: Hardcode the libudev SONAME that the package depends on.
+
+ This makes sure that we don't load an untested ABI.
+Bu-Debian: https://bugs.debian.org/722573
+
+Patch-Name: libudev_loading.diff
+---
+ src/pyudev/_ctypeslib/utils.py | 5 ++++-
+ src/pyudev/core.py             | 2 +-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/pyudev/_ctypeslib/utils.py b/src/pyudev/_ctypeslib/utils.py
+index d10b6c9..ac0dcb6 100644
+--- a/src/pyudev/_ctypeslib/utils.py
++++ b/src/pyudev/_ctypeslib/utils.py
+@@ -51,7 +51,10 @@ def load_ctypes_library(name, signatures, error_checkers):
+     :rtype: ctypes.CDLL
+     :raises ImportError: if the library is not found
+     """
+-    library_name = find_library(name)
++    if ".so" in name:
++        library_name = name
++    else:
++        library_name = find_library(name)
+     if not library_name:
+         raise ImportError('No library named %s' % name)
+     lib = CDLL(library_name, use_errno=True)
+diff --git a/src/pyudev/core.py b/src/pyudev/core.py
+index de6f245..0e44ca2 100644
+--- a/src/pyudev/core.py
++++ b/src/pyudev/core.py
+@@ -61,7 +61,7 @@ class Context(object):
+         """
+         Create a new context.
+         """
+-        self._libudev = load_ctypes_library('udev', SIGNATURES, ERROR_CHECKERS)
++        self._libudev = load_ctypes_library('libudev.so.1', SIGNATURES, ERROR_CHECKERS)
+         self._as_parameter_ = self._libudev.udev_new()
+ 
+     def __del__(self):

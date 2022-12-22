@@ -1,0 +1,4 @@
+libudev_loading.diff
+0002-Switch-to-new-style-gi.repository.GLib-imports.patch
+0003-Ignore-import-error-in-tests.patch
+0004-Enable-GLib-unit-tests.patch

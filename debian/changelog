@@ -1,0 +1,163 @@
+pyudev (0.22.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Cherry-pick upstream commits fixing pyudev.glib module (Closes: #982946)
+  * Recommends gir packages needed by pyudev.glib
+  * Configure debian branch name in debian/gbp.conf
+
+ -- Andreas Henriksson <andreas@fatal.se>  Wed, 17 Feb 2021 14:00:23 +0100
+
+pyudev (0.22.0-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Louis-Philippe Véronneau ]
+  * d/control: use dh13.
+  * d/control: update to Standards-Version 4.5.1. Add Rules-Requires-Root.
+  * d/watch: update to v4 syntax.
+
+  [ Debian Janitor ]
+  * Use secure URI in Homepage field.
+  * Bump debhelper from old 9 to 12.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Name,
+    Repository, Repository-Browse.
+  * Remove obsolete field Name from debian/upstream/metadata (already present in
+    machine-readable debian/copyright).
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Bastian Germann ]
+  * d/watch: Do not search pre-releases
+  * New upstream version 0.22.0
+  * Ignore .egg-info
+  * d/clean: Add .pytest_cache/
+  * d/copyright: Convert to DEP-5
+  * Drop outdated patches
+
+ -- Louis-Philippe Véronneau <pollo@debian.org>  Thu, 17 Dec 2020 23:43:30 -0500
+
+pyudev (0.21.0-3) unstable; urgency=medium
+
+  * Team upload.
+  * Drop python2 support; Closes: #938293, #912966
+  * Add hypothesis, mock, py, pytest, six to b-d, needed by tests
+  * Dont fail tests during build, udev devices may not be available in chroots
+
+ -- Sandro Tosi <morph@debian.org>  Tue, 17 Dec 2019 11:44:47 -0500
+
+pyudev (0.21.0-2) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/watch: Use https protocol
+  * d/changelog: Remove trailing whitespaces
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+  * Convert git repository from git-dpm to gbp layout
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Felix Geyer ]
+  * Backport upstream patches to fix compatbility with pytest 4.6.
+    - Add Use_tool_pytest_instead_of_pytest.diff
+    - Add tests_fix_tests_for_pytest_4.0.diff
+    - Closes: #942179
+
+ -- Felix Geyer <fgeyer@debian.org>  Tue, 15 Oct 2019 00:16:32 +0200
+
+pyudev (0.21.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Run more tests.
+  * Add isolation-machine restriction to autopkgtests.
+
+ -- Felix Geyer <fgeyer@debian.org>  Fri, 09 Sep 2016 23:35:21 +0200
+
+pyudev (0.19.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+  [ Felix Geyer ]
+  * New upstream release.
+  * d/watch: Mangle upstream version so RCs are less than final releases.
+
+ -- Felix Geyer <fgeyer@debian.org>  Tue, 26 Apr 2016 20:58:21 +0200
+
+pyudev (0.16.1-3) unstable; urgency=medium
+
+  * Update the watch file.
+  * Fix unsafe library loading. (Closes: #722573)
+    - Add libudev_loading.diff
+  * Bump Standards-Version to 3.9.6, no changes needed.
+  * Build-depend on dh-python.
+  * Switch to debhelper compat level 9.
+  * Add autopkgtests.
+
+ -- Felix Geyer <fgeyer@debian.org>  Fri, 26 Jun 2015 19:46:32 +0200
+
+pyudev (0.16.1-2) unstable; urgency=low
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+  [ Luk Claes ]
+  * Upload to unstable as 0.16 copes with udev 183 and higher
+    (Closes: #722570).
+
+ -- Felix Geyer <fgeyer@debian.org>  Mon, 16 Sep 2013 19:41:40 +0200
+
+pyudev (0.16.1-1) experimental; urgency=low
+
+  * New upstream release.
+    - Require at least python 3.1.
+  * Switch to my @debian.org email address.
+  * Bump Standards-Version to 3.9.4, no changes needed.
+  * Update Homepage field.
+  * Fix FTBFS if built twice in a row. (Closes: #671218)
+
+ -- Felix Geyer <fgeyer@debian.org>  Thu, 25 Oct 2012 16:41:07 +0200
+
+pyudev (0.13-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Felix Geyer <debfx-pkg@fobos.de>  Sat, 03 Dec 2011 16:06:34 +0100
+
+pyudev (0.12-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Felix Geyer <debfx-pkg@fobos.de>  Sat, 03 Sep 2011 19:45:53 +0200
+
+pyudev (0.11-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.2, no changes needed.
+  * Add DM-Upload-Allowed: yes.
+
+ -- Felix Geyer <debfx-pkg@fobos.de>  Thu, 14 Jul 2011 10:31:51 +0200
+
+pyudev (0.10-1) unstable; urgency=low
+
+  * Team upload
+
+  [ Felix Geyer ]
+  * Guard loops over supported python versions with set -e.
+  * Install upstream changelog.
+
+  [ Scott Kitterman ]
+  * New upstream release
+  * Add libudev0 (>= 151) to build-depends to support tests
+  * Drop ${python:Breaks} and ${python3:Breaks}, not used by dh_python2/3
+
+ -- Scott Kitterman <scott@kitterman.com>  Fri, 29 Apr 2011 22:18:46 -0400
+
+pyudev (0.8-1) unstable; urgency=low
+
+  * Initial release. (Closes: #612663)
+
+ -- Felix Geyer <debfx-pkg@fobos.de>  Thu, 10 Feb 2011 20:16:20 +0100

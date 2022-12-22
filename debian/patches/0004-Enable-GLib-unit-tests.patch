@@ -1,0 +1,54 @@
+From: Skruppy <skruppy@onmars.eu>
+Date: Thu, 18 Jun 2020 01:38:57 +0200
+Subject: Enable GLib unit tests
+
+---
+ tests/test_observer.py            | 5 ++---
+ tests/test_observer_deprecated.py | 5 ++---
+ tox.ini                           | 1 +
+ 3 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_observer.py b/tests/test_observer.py
+index cb31fe4..60cae0e 100644
+--- a/tests/test_observer.py
++++ b/tests/test_observer.py
+@@ -146,9 +146,8 @@ class TestPyQt5Observer(QtObserverTestBase):
+ class TestGlibObserver(ObserverTestBase):
+     def setup(self):
+         self.event_sources = []
+-        self.glib = pytest.importorskip('glib')
+-        # make sure that we also have gobject
+-        pytest.importorskip('gobject')
++        pytest.importorskip('gi')
++        self.glib = pytest.importorskip('gi.repository.GLib')
+ 
+     def teardown(self):
+         for source in self.event_sources:
+diff --git a/tests/test_observer_deprecated.py b/tests/test_observer_deprecated.py
+index e643427..cc51463 100644
+--- a/tests/test_observer_deprecated.py
++++ b/tests/test_observer_deprecated.py
+@@ -164,9 +164,8 @@ class TestDeprecatedGlibObserver(DeprecatedObserverTestBase):
+ 
+     def setup(self):
+         self.event_sources = []
+-        self.glib = pytest.importorskip('glib')
+-        # make sure that we also have gobject
+-        pytest.importorskip('gobject')
++        pytest.importorskip('gi')
++        self.glib = pytest.importorskip('gi.repository.GLib')
+ 
+     def teardown(self):
+         for source in self.event_sources:
+diff --git a/tox.ini b/tox.ini
+index 5d944f6..17c4f29 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -9,6 +9,7 @@ deps=
+     mock>=1.0b1
+     coverage
+     hypothesis
++    PyGObject
+ commands=
+     py.test {posargs:--junitxml={envname}-tests.xml -rsx}
+     coverage run --timid --branch -m py.test {posargs:--junitxml={envname}-tests.xml}

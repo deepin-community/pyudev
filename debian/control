@@ -1,0 +1,28 @@
+Source: pyudev
+Section: python
+Priority: optional
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders: Felix Geyer <fgeyer@debian.org>
+Build-Depends: debhelper-compat (= 13),
+               python3-all,
+               python3-hypothesis,
+               python3-mock,
+               python3-py,
+               python3-pytest,
+               python3-setuptools,
+               python3-six,
+               dh-python
+Standards-Version: 4.5.1
+Homepage: https://pyudev.readthedocs.org/
+Vcs-Git: https://salsa.debian.org/python-team/packages/pyudev.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/pyudev
+Rules-Requires-Root: no
+
+Package: python3-pyudev
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, libudev1
+Recommends: python3-gi, gir1.2-glib-2.0
+Description: Python3 bindings for libudev
+ This module provides a Python3 binding to the udev library.
+ .
+ It supports additional integration for GObject, PyQt4 and PySide.
